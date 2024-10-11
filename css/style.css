@@ -1,0 +1,161 @@
+body {
+  user-select: none;
+}
+
+.unselectable {
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
+}
+
+.block-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* 容器宽度铺满屏幕 */
+  height: 100%;
+  /* 容器高度铺满屏幕 */
+  background-color: white;
+  /* border: 10px solid black; */
+}
+
+.block {
+  position: absolute;
+  border: 2px solid black;
+  transition: transform 1s;
+  z-index: 1;
+}
+
+.block:hover {
+  transform: scale(1.1);
+}
+
+.cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+  /* 半透明白色背景 */
+  backdrop-filter: blur(5px);
+  /* 背景模糊化 */
+  z-index: 2;
+  transition: transform 2s;
+  pointer-events: none;
+}
+
+.cover.removed {
+  opacity: 0;
+  /* 逐渐变得透明 */
+  transition: transform 2s, opacity 2s;
+  /* 添加过渡效果 */
+}
+
+.title_container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  /* 确保在最上层显示 */
+}
+
+.title_container.remove {
+  transform: translateX(100%);
+  /* 向右移动，直到完全不在视窗内 */
+  opacity: 0;
+  /* 逐渐变得透明 */
+  transition: transform 2s, opacity 2s;
+  /* 添加过渡效果 */
+}
+
+.title_container.centered-text {
+  color: white;
+  /* 文本颜色 */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* 背景颜色，使用半透明黑色 */
+  backdrop-filter: blur(10px);
+  /* 背景模糊化 */
+  padding: 10px 20px;
+  /* 文本内边距 */
+  font-size: 2em;
+  /* 文本字体大小 */
+  width: 100%;
+  transition: transform 2s;
+  /* 添加过渡效果 */
+}
+
+.centered-text:hover {
+  transform: translate(-50%, -50%) translateX(70%);
+}
+
+.title_container.centered-text::before {
+  content: '';
+  position: absolute;
+  top: -25%;
+  /* 向上扩大25% */
+  right: -25%;
+  /* 向右扩大25% */
+  bottom: -50%;
+  /* 向下扩大25% */
+  left: -50%;
+  /* 向左扩大25% */
+  background: transparent;
+  z-index: -1;
+}
+
+.title_container.centered-text:hover+.cover {
+  transform: translateY(-100%);
+  /* 向上平移直至消失 */
+}
+
+.backword_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5em;
+  height: 1em;
+  border-right: 1px solid transparent;
+  pointer-events: none;
+  display: none;
+  z-index: 2;
+}
+
+.backword_container.backword {
+  color: black;
+  font-size: 3em;
+}
+.typing {
+  animation: typing 2s steps(42, end), blink-caret .75s step-end infinite;
+  word-break: break-all;
+  overflow: hidden;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 5em;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: currentColor;
+  }
+}
