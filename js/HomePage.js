@@ -24,7 +24,7 @@ const is_random_direction = false;
 function getRandomInt(MIN, MAX) {
     return Math.floor(Math.random() * (MAX - MIN)) + MIN;
 }
-//二位数组插入三维数组  用于
+//二位数组插入三维数组
 function insert3DArray(originArr, instertArr, option_1, option_2) {
     let index = 0;
     // 找到要插入的位置
