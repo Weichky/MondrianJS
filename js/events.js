@@ -25,26 +25,26 @@ function restore(element) {
 }
 
 function getRandomColor() {
-    const COLOR_RANGE = [50, 50 ,50];
+    const COLOR_RANGE = [10, 10, 10]; // 轻微偏差，让颜色有点变化
     const BASE_COLOR = [
-        [205, 92, 92],    // 印度红
-        [250, 250, 250],  // 雪色
-        [245, 222, 179],  // 小麦色
-        [128, 128, 0],    // 橄榄色
-        [32, 178, 170]    // 浅海绿
+        [227, 0, 15],     // 红色
+        [255, 221, 51],   // 黄色
+        [0, 48, 143],     // 蓝色
+        [255, 255, 255]   // 白色
     ];
 
     // 随机选择一个基准色
     const baseIndex = Math.floor(Math.random() * BASE_COLOR.length);
     const baseColor = BASE_COLOR[baseIndex];
 
-    // 随机在基准色的范围内生成颜色
-    const r = baseColor[0] + Math.floor(Math.random() * COLOR_RANGE[0]);
-    const g = baseColor[1] + Math.floor(Math.random() * COLOR_RANGE[1]);
-    const b = baseColor[2] + Math.floor(Math.random() * COLOR_RANGE[2]);
+    // 在基准色范围内生成颜色
+    const r = Math.min(255, baseColor[0] + Math.floor(Math.random() * COLOR_RANGE[0]));
+    const g = Math.min(255, baseColor[1] + Math.floor(Math.random() * COLOR_RANGE[1]));
+    const b = Math.min(255, baseColor[2] + Math.floor(Math.random() * COLOR_RANGE[2]));
 
     return `rgb(${r}, ${g}, ${b})`;
 }
+
 function getMaxZIndex(elements) {
     let maxZIndex = defaultZIndex;
     elements.forEach((elem) => {

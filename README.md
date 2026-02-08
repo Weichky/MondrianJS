@@ -2,6 +2,8 @@
 
 A JavaScript project for generating random Mondrian-inspired color blocks. The coordinate generator can be extracted and used independently with your own rendering logic.
 
+[Demo](demo.gif)
+
 For more on the design approach and implementation, see my blog: [Weichky's Blog](https://blog.weichky.com)
 
 * [Random Mondrian-style Color Blocks (1)](https://blog.weichky.com/tech/136.html)
